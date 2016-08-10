@@ -15,3 +15,7 @@ ls.get('test').then((data) => {console.log("get updated: ", data)});
 ls.remove('test');
 ls.get('test').then((data) => {console.log("get removed: ", data)});
 ```
+##Features to be implemented
+- [ ] Expand functionalities
+- [ ] Implement setState feature
+- [ ] Implement fetch feature
