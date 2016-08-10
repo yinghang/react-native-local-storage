@@ -11,20 +11,40 @@ import {
   Text,
   View
 } from 'react-native';
+var ls = require('react-native-local-storage');
 
 class testLS extends Component {
   render() {
+    ls.set('test', 'blah');
+    ls.get('test').then((data) => {console.log("get: ", data)});
+    ls.update('test', 'bleh');
+    ls.get('test').then((data) => {console.log("get updated: ", data)});
+    ls.remove('test');
+    ls.get('test').then((data) => {console.log("get removed: ", data)});
+    console.log("Multi key test");
+    ls.set('Cole', 'Ellison');
+    ls.set('YH', 'Eng');
+    ls.set('Eagle', 'Wu');
+    ls.get(['Cole', 'YH', 'Eagle']).then((data) => {console.log("multi get data: ", data)})
+      .then(()=> {
+          console.log("Multi remove test");
+          ls.remove(['Cole', 'YH', 'Eagle']).then( () => {
+              ls.get(['Cole', 'YH', 'Eagle']).then((data) => {
+                console.log("multi get data: ", data)
+              });
+            }
+          )
+        }
+      )
+
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to React Native Local Storage Test App
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Press Cmd+D or shake for dev menu, {'\n'} and check console for test results.
         </Text>
       </View>
     );

@@ -24,6 +24,12 @@ var localStorage = {
       return AsyncStorage.getItem(key).then(function (value) {
         return value;
       });
+    } else {
+      return AsyncStorage.multiGet(key).then(function (values) {
+        return values.map(function (value) {
+          return value[1];
+        });
+      });
     }
   },
 
@@ -32,7 +38,12 @@ var localStorage = {
   },
 
   remove(key){
-    return AsyncStorage.removeItem(key);
+    if (!Array.isArray(key)){
+      return AsyncStorage.removeItem(key);
+    } else {
+      return AsyncStorage.multiRemove(key);
+    }
+
   }
 }
 
