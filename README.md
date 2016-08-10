@@ -17,7 +17,7 @@ ls.save('name', 'Kobe Bryant')
     // output should be "get: Kobe Bryant"
   })
 ```
-##Auto setState Feature
+##Auto setState feature
 Sometimes, it's very annoying to setState separately after grabbing the data from AsyncStorage. Thus, I wrote a quick function that helps you setState automatically after the data is obtained from AS and there's also no need to parse the array of arrays given back by AsyncStorage.
 ```Javascript
 var ls = require('react-native-local-storage');
