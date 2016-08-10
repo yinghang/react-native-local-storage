@@ -15,8 +15,14 @@ import {
 } from 'react-native';
 
 var localStorage = {
-  set(key, value){
+  save(key, value){
     return AsyncStorage.setItem(key, value);
+  },
+
+  getSet(key, stateKey, ssFunction){
+    return AsyncStorage.getItem(key).then(function (value) {
+      ssFunction(stateKey, value);
+    });
   },
 
   get(key) {
