@@ -10,7 +10,7 @@ var ls = require('react-native-local-storage');
 
 ls.set('test', 'blah');
 ls.get('test').then((data) => {console.log("get: ", data)});
-ls.set('test', 'bleh');
+ls.update('test', 'bleh');
 ls.get('test').then((data) => {console.log("get updated: ", data)});
 ls.remove('test');
 ls.get('test').then((data) => {console.log("get removed: ", data)});
