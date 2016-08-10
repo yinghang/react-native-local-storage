@@ -22,6 +22,10 @@ Sometimes, it's very annoying to setState separately after grabbing the data fro
 ```Javascript
 var ls = require('react-native-local-storage');
 
+lsSet(key, val){
+  this.setState({[key]: val});
+}
+
 var n = ls.save('name', 'Kobe Bryant');
 var a = ls.save('age', '37');
 var pn = ls.save('player no.', '24');
