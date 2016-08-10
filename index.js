@@ -19,10 +19,20 @@ var localStorage = {
     return AsyncStorage.setItem(key, value);
   },
 
-  getSet(key, stateKey, ssFunction){
-    return AsyncStorage.getItem(key).then(function (value) {
-      ssFunction(stateKey, value);
-    });
+  getSet(key, ssFunction){
+    if(!Array.isArray(key)){
+      return AsyncStorage.getItem(key).then(function (value) {
+        ssFunction(key, value);
+      });
+    } else {
+      return AsyncStorage.multiGet(key).then(function (values) {
+        for(var i = 0; i < values.length; i++){
+          ssFunction(values[i][0],values[i][1]);
+        }
+        return;
+      });
+    }
+
   },
 
   get(key) {
