@@ -4,6 +4,11 @@
 // #1 - reduce code mess for AsyncStorage
 // #2 - practice creating react native modules
 
+// features to implement
+// #1 - expand the functionalities to support multiGet etc
+// #2 - help setState?
+// #3 - help with fetch?
+
 import React, { Component } from 'react';
 import {
   AsyncStorage
