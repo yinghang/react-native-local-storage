@@ -1,0 +1,22 @@
+{
+  "name": "react-native-local-storage",
+  "version": "1.0.0",
+  "description": "Basic AsyncStorage wrapper for React Native to reduce code clutter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yinghang/react-native-local-storage.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Ying Hang Eng <eyinghang@gmail.com> (http://github.com/yinghang)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yinghang/react-native-local-storage/issues"
+  },
+  "homepage": "https://github.com/yinghang/react-native-local-storage#readme"
+}
