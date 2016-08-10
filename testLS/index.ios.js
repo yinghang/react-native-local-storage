@@ -19,14 +19,15 @@ class testLS extends Component {
 
   componentDidMount(){
     console.log("react-native-local-storage test starts");
-    ls.save('Abhi', 'Ramesh')
-    ls.save('Cole', 'Ellison')
-      .then(()=>{
-        ls.getSet(['Abhi', 'Cole'], this.lsSet.bind(this))
-          .then(()=>{
-            console.log(this.state);
-          })
-      })
+    var n = ls.save('name', 'Kobe Bryant');
+    var a = ls.save('age', '37');
+    var pn = ls.save('player no.', '24');
+    Promise.all([n, a, pn]).then(()=>{
+      ls.getSet(['name', 'age', 'player no.'], this.lsSet.bind(this))
+        .then(()=>{
+          console.log(this.state);
+        })
+    });
   }
 
 
