@@ -40,26 +40,28 @@ Promise.all([n, a, pn]).then(()=>{
 
 ##Adding an array of objects
 ```Javascript
-    console.log("test for saving an array of objects");
-    var test = ls.save(['testArray', 'testingArray'], [
-    {
-      blah1: 1,
-      blah2: 2,
-      blah3: 'numberrrr 3'
-    },
-    {
-      blah4: 4,
-      blah5: 5,
-      blah6: 'numberrrr 6'
-    }
-    ]);
-    Promise.all([test]).then(() => {
-      ls.getSet(['testArray', 'testingArray'], this.lsSet.bind(this))
-        .then(()=>{
-          console.log(this.state);
-          // output should be "Object {testArray: Object, testingArray: Object}"
-        })
+console.log("test for saving an array of objects");
+
+var test = ls.save(['testArray', 'testingArray'], [
+{
+  blah1: 1,
+  blah2: 2,
+  blah3: 'numberrrr 3'
+},
+{
+  blah4: 4,
+  blah5: 5,
+  blah6: 'numberrrr 6'
+}
+]);
+
+Promise.all([test]).then(() => {
+  ls.getSet(['testArray', 'testingArray'], this.lsSet.bind(this))
+    .then(()=>{
+      console.log(this.state);
+      // output should be "Object {testArray: Object, testingArray: Object}"
     })
+})
 ```
 
 
