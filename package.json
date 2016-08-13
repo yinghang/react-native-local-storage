@@ -1,6 +1,6 @@
 {
   "name": "react-native-local-storage",
-  "version": "1.0.2",
+  "version": "1.5",
   "description": "Basic AsyncStorage wrapper for React Native to reduce code clutter",
   "main": "index.js",
   "scripts": {

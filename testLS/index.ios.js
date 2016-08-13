@@ -8,7 +8,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 var ls = require('react-native-local-storage');
 
@@ -20,14 +21,34 @@ class testLS extends Component {
   componentDidMount(){
     console.log("react-native-local-storage test starts");
     var n = ls.save('name', 'Kobe Bryant');
-    var a = ls.save('age', '37');
-    var pn = ls.save('player no.', '24');
+    var a = ls.save('age', 37);
+    var pn = ls.save('player no.', 24);
     Promise.all([n, a, pn]).then(()=>{
       ls.getSet(['name', 'age', 'player no.'], this.lsSet.bind(this))
         .then(()=>{
           console.log(this.state);
         })
     });
+
+    console.log("test for saving an array of objects");
+    var test = ls.save(['testArray', 'testingArray'], [
+    {
+      blah1: 1,
+      blah2: 2,
+      blah3: 'numberrrr 3'
+    },
+    {
+      blah4: 4,
+      blah5: 5,
+      blah6: 'numberrrr 6'
+    }
+    ]);
+    Promise.all([test]).then(() => {
+      ls.getSet(['testArray', 'testingArray'], this.lsSet.bind(this))
+        .then(()=>{
+          console.log(this.state);
+        })
+    })
   }
 
 

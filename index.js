@@ -16,18 +16,26 @@ import {
 
 var localStorage = {
   save(key, value){
-    return AsyncStorage.setItem(key, value);
+    if(!Array.isArray(key)){
+      return AsyncStorage.setItem(key, JSON.stringify(value));  
+    } else {
+      for(var i = 0; i < key.length; i++){
+        AsyncStorage.setItem(key[i], JSON.stringify(value[i]));
+      }
+      return;
+    }
+    
   },
 
   getSet(key, ssFunction){
     if(!Array.isArray(key)){
       return AsyncStorage.getItem(key).then(function (value) {
-        ssFunction(key, value);
+        ssFunction(key, JSON.parse(value));
       });
     } else {
       return AsyncStorage.multiGet(key).then(function (values) {
         for(var i = 0; i < values.length; i++){
-          ssFunction(values[i][0],values[i][1]);
+          ssFunction(values[i][0],JSON.parse(values[i][1]));
         }
         return;
       });
@@ -38,12 +46,12 @@ var localStorage = {
   get(key) {
     if (!Array.isArray(key)) {
       return AsyncStorage.getItem(key).then(function (value) {
-        return value;
+        return JSON.parse(value);
       });
     } else {
       return AsyncStorage.multiGet(key).then(function (values) {
         return values.map(function (value) {
-          return value[1];
+          return JSON.parse(value[1]);
         });
       });
     }
