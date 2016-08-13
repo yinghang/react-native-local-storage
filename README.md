@@ -27,16 +27,41 @@ lsSet(key, val){
 }
 
 var n = ls.save('name', 'Kobe Bryant');
-var a = ls.save('age', '37');
-var pn = ls.save('player no.', '24');
+var a = ls.save('age', 37);
+var pn = ls.save('player no.', 24);
 Promise.all([n, a, pn]).then(()=>{
   ls.getSet(['name', 'age', 'player no.'], this.lsSet.bind(this))
     .then(()=>{
       console.log(this.state);
-      // output should be "{name: "Kobe Bryant", age: "37", player no.: "24"}"
+      // output should be "{name: "Kobe Bryant", age: 37, player no.: 24}"
     })
 });
 ```
+
+##Adding an array of objects
+```Javascript
+    console.log("test for saving an array of objects");
+    var test = ls.save(['testArray', 'testingArray'], [
+    {
+      blah1: 1,
+      blah2: 2,
+      blah3: 'numberrrr 3'
+    },
+    {
+      blah4: 4,
+      blah5: 5,
+      blah6: 'numberrrr 6'
+    }
+    ]);
+    Promise.all([test]).then(() => {
+      ls.getSet(['testArray', 'testingArray'], this.lsSet.bind(this))
+        .then(()=>{
+          console.log(this.state);
+          // output should be "Object {testArray: Object, testingArray: Object}"
+        })
+    })
+```
+
 
 ##Features to be implemented
 
