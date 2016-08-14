@@ -74,3 +74,7 @@ Promise.all([test]).then(() => {
 - [ ] Implement encryption feature
 - [ ] Implement cache+expiration feature
 
+##Contributors
+
+- Ying Hang Eng (Me)
+- [Cole Ellison](http://github.com/crellison)
