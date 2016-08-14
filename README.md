@@ -73,8 +73,10 @@ Promise.all([test]).then(() => {
 - [ ] Implement fetch feature
 - [ ] Implement encryption feature
 - [ ] Implement cache+expiration feature
+- [ ] Implement tests using Jest
 
 ##Contributors
 
 - Ying Hang Eng (Me)
 - [Cole Ellison](http://github.com/crellison)
+- You! Feel free to contribute in any way. :D
