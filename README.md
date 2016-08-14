@@ -67,6 +67,10 @@ Promise.all([test]).then(() => {
 
 ##Features to be implemented
 
-- [ ] Expand functionalities
+- [ ] Expand functionalities - neverending process ain't it?
 - [x] Implement setState feature
+- [x] Implement array feature
 - [ ] Implement fetch feature
+- [ ] Implement encryption feature
+- [ ] Implement cache+expiration feature
+
