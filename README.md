@@ -1,14 +1,27 @@
 # react-native-local-storage
 Simple AsyncStorage wrapper for React Native to solve code mess
 
-##How to install
+## How to install
 `npm i react-native-local-storage --save`
 
-##Why did I build this?
+## Why did I build this?
 While working on a React Native project, I discovered that AsyncStorage and its async nature was a pain in the bottom. It was also very troublesome to copy the same chunk of code everywhere when we needed to access the storage. Thus, I decided to create a package to solve some of my problems and hopefully someone else's too!
 
-##How to use
+## Methods
+All methods are Promise-based.
+
+*   __get(keyName)__ : Get key(s) from local storage. _keyname_ may be a string or an array.
+*   __set(keyName, value)__ : Save _value(s)_ to _keyname(s)_. _keyname_ and _value_ may be a string or an array (both must be the same type).
+*   __getSet(keyName, callback)__ : Get a key from local storage and execute _callback_ with the data. _callback_ receives the key and value.
+*   __getAllKeys()__ : Get _all_ keys from local storage.
+*   __merge(keyName, value)__ : merge _value_ to existing _keyname_ value. _keyname_ and _value_ may be a string or an array (both must be the same type).
+*   __remove(keyName)__ : Remove key(s) from local storage. _keyname_ may be a string or an array.
+*   __clear()__ : Remove _all_ keys from local storage.
+
+
+## Examples
 ```Javascript
+// Save to a key, then immediately fetch it.
 var ls = require('react-native-local-storage');
 
 ls.save('name', 'Kobe Bryant')
@@ -17,7 +30,8 @@ ls.save('name', 'Kobe Bryant')
     // output should be "get: Kobe Bryant"
   })
 ```
-##Auto setState feature
+
+### getSet : Auto setState feature
 Sometimes, it's very annoying to setState separately after grabbing the data from AsyncStorage. Thus, I wrote a quick function that helps you setState automatically after the data is obtained from AS and there's also no need to parse the array of arrays given back by AsyncStorage.
 ```Javascript
 var ls = require('react-native-local-storage');
@@ -38,11 +52,11 @@ Promise.all([n, a, pn]).then(()=>{
 });
 ```
 
-##Adding an array of objects
+### Storing multiple keys & values
 ```Javascript
 console.log("test for saving an array of objects");
 
-var test = ls.save(['testArray', 'testingArray'], [
+ls.save(['testArray', 'testingArray'], [
 {
   blah1: 1,
   blah2: 2,
@@ -53,9 +67,8 @@ var test = ls.save(['testArray', 'testingArray'], [
   blah5: 5,
   blah6: 'numberrrr 6'
 }
-]);
-
-Promise.all([test]).then(() => {
+])
+.then(() => {
   ls.getSet(['testArray', 'testingArray'], this.lsSet.bind(this))
     .then(()=>{
       console.log(this.state);
@@ -65,18 +78,19 @@ Promise.all([test]).then(() => {
 ```
 
 
-##Features to be implemented
+## Features to be implemented
 
-- [ ] Expand functionalities - neverending process ain't it?
-- [x] Implement setState feature
-- [x] Implement array feature
-- [ ] Implement fetch feature
-- [ ] Implement encryption feature
-- [ ] Implement cache+expiration feature
-- [ ] Implement tests using Jest
+-   [ ] Expand functionalities - neverending process ain't it?
+-   [x] Implement setState feature
+-   [x] Implement array feature
+-   [ ] Implement fetch feature
+-   [ ] Implement encryption feature
+-   [ ] Implement cache+expiration feature
+-   [ ] Implement tests using Jest
 
-##Contributors
+## Contributors
 
-- Ying Hang Eng (Me)
-- [Cole Ellison](http://github.com/crellison)
-- You! Feel free to contribute in any way. :D
+-   Ying Hang Eng (Me)
+-   [Cole Ellison](http://github.com/crellison)
+-   [Peace Chen](http://github.com/peacechen)
+-   You! Feel free to contribute in any way. :D
